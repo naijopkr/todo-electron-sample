@@ -2,6 +2,18 @@
 <html>
   <head></head>
   <body>
-    
+    <h1>My Todos</h1>
+    <ul></ul>
+    <script>
+      const { ipcRenderer } = require('electron')
+      const ul = document.querySelector('ul')
+
+      ipcRenderer.on('todo:add', (evt, todo) => {
+        const li = document.createElement('li')
+        const text = document.createTextNode(todo)
+        li.appendChild(text)
+        ul.appendChild(li)
+      })
+    </script>
   </body>
 </html>

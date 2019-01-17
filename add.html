@@ -10,5 +10,18 @@
     </div>
     <button type="submit">Add</button>
   </form>
+
+  <script>
+    const form = document.querySelector('form')
+    const input = document.querySelector('input')
+    const { ipcRenderer } = require('electron')
+
+    form.addEventListener('submit', evt => {
+      evt.preventDefault()
+
+      const { value } = input
+      ipcRenderer.send('todo:add', value)
+    })
+  </script>
 </body>
 </html>
