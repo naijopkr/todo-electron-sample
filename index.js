@@ -16,13 +16,19 @@ const createAddWindow = () => {
   return addWindow.loadURL(`file://${__dirname}/add.html`)
 }
 
+const clearTodos = () => mainWindow.webContents.send('todo:clear')
+
 const menuTemplate = [
   {
     label: 'File',
     submenu: [
       { 
-        label: 'New Todo',
+        label: 'Add Todo',
         click: () => createAddWindow()
+      },
+      {
+        label: 'Clear Todos',
+        click: () => clearTodos()
       },
       { 
         label: 'Quit',
